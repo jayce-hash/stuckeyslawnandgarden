@@ -14,11 +14,11 @@
             --text-primary: #1D1D1F;   
             --text-secondary: #86868B; 
             
-            /* Richer Brand Accents */
+            /* Stuckey's Brand Accents */
             --brand-green: #2E7D32;    
             --brand-green-dark: #1B5E20;
             --brand-yellow: #FBC02D;   
-            --brand-brown: #3E2723;    
+            --brand-brown: #3E2723; /* The signature store brown */   
             
             /* UI Elements */
             --radius-xl: 24px;
@@ -55,7 +55,7 @@
             padding: 0 24px;
         }
 
-        /* Keyframe Animations for "Spice" */
+        /* Keyframe Animations */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -71,15 +71,16 @@
         .delay-3 { animation-delay: 0.3s; }
 
         /* =========================================
-           GLOBAL HEADER (KEEP ON ALL PAGES)
+           GLOBAL HEADER (DARK GLASSMORPHISM)
            ========================================= */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
+            /* Rich brown with slight transparency */
+            background-color: rgba(62, 39, 35, 0.92);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
             z-index: 9999;
             transition: var(--transition);
         }
@@ -87,19 +88,25 @@
         .nav-wrapper {
             display: flex;
             flex-direction: column;
-            padding: 16px 0 0 0;
+            align-items: center;
+            padding: 12px 0 0 0;
         }
 
         .logo {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--text-primary);
-            text-align: center;
-            letter-spacing: -0.04em;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
-        .logo span { color: var(--brand-green); }
+        .nav-logo-img {
+            max-height: 55px; 
+            width: auto;
+            display: block;
+            filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.3));
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-logo-img:hover {
+            transform: scale(1.03); 
+        }
 
         nav {
             width: 100%;
@@ -112,7 +119,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            padding: 0 24px 16px 24px;
+            padding: 8px 24px 16px 24px;
             gap: 28px;
             white-space: nowrap;
         }
@@ -120,30 +127,29 @@
         nav a {
             font-size: 13px;
             font-weight: 600;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.75); /* Light text for dark header */
             text-transform: uppercase;
             letter-spacing: 0.05em;
             transition: var(--transition);
             position: relative;
         }
 
-        nav a:hover, nav a.active { color: var(--brand-green); }
+        nav a:hover, nav a.active { color: var(--brand-yellow); }
         
-        /* Subtle underline hover effect */
         nav a::after {
             content: ''; position: absolute; width: 0; height: 2px;
-            bottom: -4px; left: 0; background-color: var(--brand-green);
+            bottom: -6px; left: 0; background-color: var(--brand-yellow);
             transition: var(--transition);
         }
-        nav a:hover::after { width: 100%; }
+        nav a:hover::after, nav a.active::after { width: 100%; }
 
-        /* Desktop Nav Alignment */
         @media (min-width: 1024px) {
             .nav-wrapper {
                 flex-direction: row; align-items: center; justify-content: space-between;
-                max-width: 1400px; margin: 0 auto; padding: 16px 32px;
+                max-width: 1400px; margin: 0 auto; padding: 12px 32px;
             }
             .logo { margin-bottom: 0; }
+            .nav-logo-img { max-height: 65px; }
             nav { width: auto; overflow-x: visible; }
             nav ul { padding: 0; margin: 0; gap: 32px; }
         }
@@ -152,13 +158,12 @@
            PAGE SPECIFIC CONTENT
            ========================================= */
         main {
-            margin-top: 100px; /* Offset for fixed header */
+            margin-top: 110px; 
         }
 
-        /* Dynamic Hero Section */
         .hero {
             /* REPLACE 'YOUR_PHOTO_HERE.jpg' WITH ACTUAL URL */
-            background: linear-gradient(135deg, rgba(62, 39, 35, 0.8) 0%, rgba(46, 125, 50, 0.4) 100%), url('YOUR_PHOTO_HERE.jpg');
+            background: linear-gradient(135deg, rgba(62, 39, 35, 0.7) 0%, rgba(46, 125, 50, 0.4) 100%), url('YOUR_PHOTO_HERE.jpg');
             background-size: cover;
             background-position: center;
             background-color: var(--brand-brown);
@@ -177,7 +182,7 @@
         }
 
         @media (min-width: 1024px) {
-            .hero { margin: 0 24px; border-radius: var(--radius-xl); margin-top: 120px; }
+            .hero { margin: 0 24px; border-radius: var(--radius-xl); margin-top: 130px; }
             main { margin-top: 0; }
         }
 
@@ -229,7 +234,6 @@
             text-align: center;
         }
 
-        /* Gradient text to make it pop */
         .text-gradient {
             background: linear-gradient(135deg, var(--brand-green), var(--brand-yellow));
             -webkit-background-clip: text;
@@ -278,7 +282,6 @@
             overflow: hidden;
         }
 
-        /* Subtle hover gradient inside cards */
         .card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at top right, rgba(46,125,50,0.03), transparent 70%);
@@ -291,7 +294,6 @@
         }
         .card:hover::before { opacity: 1; }
 
-        /* Sleek SVG Icons */
         .card-icon {
             width: 56px; height: 56px;
             background-color: var(--bg-color);
@@ -308,21 +310,15 @@
             transform: scale(1.1) rotate(-5deg);
         }
 
-        .card h3 {
-            font-size: 24px; font-weight: 700; margin-bottom: 16px; color: var(--text-primary);
-        }
-
-        .card p {
-            font-size: 17px; color: var(--text-secondary); margin-bottom: 8px;
-        }
-
+        .card h3 { font-size: 24px; font-weight: 700; margin-bottom: 16px; color: var(--text-primary); }
+        .card p { font-size: 17px; color: var(--text-secondary); margin-bottom: 8px; }
         .card strong { color: var(--text-primary); font-weight: 600; }
 
         /* =========================================
-           GLOBAL FOOTER (KEEP ON ALL PAGES)
+           GLOBAL FOOTER
            ========================================= */
         footer {
-            background-color: var(--text-primary);
+            background-color: var(--brand-brown);
             color: #F5F5F7;
             padding: 80px 24px 40px 24px;
             border-radius: var(--radius-xl) var(--radius-xl) 0 0;
@@ -339,7 +335,12 @@
         }
 
         .footer-logo {
-            font-size: 28px; font-weight: 800; margin-bottom: 32px; color: var(--surface-color);
+            margin-bottom: 32px;
+        }
+
+        .footer-logo img {
+            max-height: 80px;
+            opacity: 0.9;
         }
 
         .footer-links {
@@ -348,7 +349,7 @@
 
         .footer-links a {
             font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
-            color: rgba(255,255,255,0.6); transition: var(--transition);
+            color: rgba(255,255,255,0.7); transition: var(--transition);
         }
 
         .footer-links a:hover { color: var(--brand-yellow); }
@@ -365,7 +366,9 @@
     <header>
         <div class="nav-wrapper">
             <div class="logo">
-                Stuckey's <span>Lawn & Garden</span>
+                <a href="index.html">
+                    <img src="StuckeysLogo.png" alt="Stuckey's Lawn & Garden" class="nav-logo-img">
+                </a>
             </div>
             <nav>
                 <ul>
@@ -444,9 +447,14 @@
         </section>
 
     </main>
+
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">Stuckey's Lawn & Garden</div>
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="StuckeysLogo.png" alt="Stuckey's Lawn & Garden">
+                </a>
+            </div>
             <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="team.html">Our Team</a>
