@@ -16,9 +16,8 @@
             
             /* Stuckey's Brand Accents */
             --brand-green: #2E7D32;    
-            --brand-green-dark: #1B5E20;
             --brand-yellow: #FBC02D;   
-            --brand-brown: #3E2723; /* The signature store brown */   
+            --brand-brown: #3E2723;   
             
             /* UI Elements */
             --radius-xl: 24px;
@@ -76,7 +75,7 @@
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            background-color: rgba(62, 39, 35, 0.96); /* Slightly more opaque brown */
+            background-color: rgba(62, 39, 35, 0.85); /* Slight transparency to let hero bleed through */
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -88,15 +87,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 24px 0 0 0; /* More breathing room on top */
+            padding: 16px 0 0 0;
         }
 
         .logo {
-            margin-bottom: 20px; /* Strong spacing below mobile logo */
+            margin-bottom: 16px;
         }
 
         .nav-logo-img {
-            max-height: 90px; /* Substantially larger mobile logo */
+            max-height: 80px; 
             width: auto;
             display: block;
             filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5));
@@ -118,17 +117,17 @@
         nav ul {
             display: flex;
             list-style: none;
-            padding: 12px 24px 28px 24px; /* Strong spacing below nav items */
-            gap: 32px;
+            padding: 8px 24px 20px 24px; 
+            gap: 24px;
             white-space: nowrap;
         }
 
         nav a {
-            font-size: 13px;
+            font-size: 12px; /* Reduced to fit all links */
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.8); 
+            color: rgba(255, 255, 255, 0.85); 
             text-transform: uppercase;
-            letter-spacing: 0.06em; /* Slightly more letter-spacing for premium feel */
+            letter-spacing: 0.04em; /* Tightened letter spacing */
             transition: var(--transition);
             position: relative;
         }
@@ -142,61 +141,54 @@
         }
         nav a:hover::after, nav a.active::after { width: 100%; }
 
+        /* Fixed Desktop Nav Alignment */
         @media (min-width: 1024px) {
             .nav-wrapper {
-                flex-direction: row; align-items: center; justify-content: space-between;
-                max-width: 1400px; margin: 0 auto; padding: 20px 48px; /* Refined desktop padding */
+                flex-direction: row; 
+                align-items: center; 
+                justify-content: space-between; /* Pushes Logo Left, Nav Right */
+                max-width: 100%; /* Use full width */
+                padding: 16px 40px; 
             }
-            .logo { margin-bottom: 0; }
-            .nav-logo-img { max-height: 120px; } /* Massive desktop logo */
+            .logo { margin-bottom: 0; flex-shrink: 0; }
+            .nav-logo-img { max-height: 100px; } 
             nav { width: auto; overflow-x: visible; }
-            nav ul { padding: 0; margin: 0; gap: 40px; } /* Clean, spacious desktop nav */
+            nav ul { 
+                padding: 0; 
+                margin: 0; 
+                gap: 18px; /* Perfectly spaced to fit all 10 links on screen */
+                flex-wrap: nowrap;
+            } 
+        }
+
+        @media (min-width: 1400px) {
+            nav ul { gap: 28px; } /* Gives more breathing room on massive screens */
+            nav a { font-size: 13px; }
         }
 
         /* =========================================
            PAGE SPECIFIC CONTENT
            ========================================= */
         main {
-            margin-top: 170px; /* Offset for the taller header on mobile */
+            margin-top: 0; /* Removed margin so hero slides UNDER the header */
         }
 
         .hero {
-            /* SEAMLESS HERO BLEND: Hero fallback blends perfectly from the brown header down to charcoal black */
-            background: linear-gradient(to bottom, rgba(62, 39, 35, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%), url('YOUR_PHOTO_HERE.jpg');
+            /* Full edge-to-edge bleed, no white corners */
+            background: linear-gradient(to bottom, var(--brand-brown) 0%, rgba(20, 20, 20, 0.9) 100%), url('YOUR_PHOTO_HERE.jpg');
             background-size: cover;
             background-position: center;
-            background-color: var(--brand-brown); /* Primary fallback is the store brown */
-            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-            margin: 0; /* No white edges */
-            height: 90vh; /* Taller hero */
-            min-height: 700px;
+            background-color: var(--brand-brown); 
+            margin: 0; 
+            border-radius: 0; /* NUKED THE ROUNDED CORNERS */
+            min-height: 90vh;
+            padding: 180px 24px 80px 24px; /* Huge top padding to push text below the transparent header */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: #FFFFFF;
-            padding: 0 24px;
-            box-shadow: var(--shadow-float);
-            position: relative; /* For blending */
-        }
-
-        /* Seamlessly extend the brown header color down into the hero */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -100px; /* Bleed up into the header area */
-            left: 0;
-            width: 100%;
-            height: 200px; /* Deep blend area */
-            background: linear-gradient(to bottom, var(--brand-brown), rgba(62, 39, 35, 0));
-            z-index: -1; /* Place below hero content */
-            pointer-events: none; /* Let clicks pass through */
-        }
-
-        @media (min-width: 1024px) {
-            .hero { margin: 0; border-radius: var(--radius-xl); margin-top: 160px; } /* Seamless full-width blend */
-            main { margin-top: 0; }
         }
 
         .hero h1 {
@@ -205,7 +197,7 @@
             line-height: 1.05;
             max-width: 900px;
             margin-bottom: 24px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Stronger shadow for premium contrast */
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5); 
             letter-spacing: -0.03em;
         }
 
@@ -243,7 +235,7 @@
 
         /* Typography Focused Intro */
         .intro {
-            padding: 140px 24px; /* More breathing room for intro section */
+            padding: 140px 24px; 
             text-align: center;
         }
 
@@ -333,7 +325,7 @@
         footer {
             background-color: var(--brand-brown);
             color: #F5F5F7;
-            padding: 90px 24px 60px 24px; /* More breathing room in footer */
+            padding: 90px 24px 60px 24px; 
             border-radius: var(--radius-xl) var(--radius-xl) 0 0;
             margin-top: 40px;
         }
@@ -347,14 +339,8 @@
             text-align: center;
         }
 
-        .footer-logo {
-            margin-bottom: 60px; /* Strong spacing below footer logo */
-        }
-
-        .footer-logo img {
-            max-height: 160px; /* Massive footer logo */
-            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5));
-        }
+        .footer-logo { margin-bottom: 60px; }
+        .footer-logo img { max-height: 160px; filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5)); }
 
         .footer-links {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 64px; max-width: 800px;
@@ -403,7 +389,7 @@
     <main id="page-content">
         
         <section class="hero animate-up">
-            <h1>Set the standard.</h1>
+            <h1>Your Dream Yard Starts Here.</h1>
             <p>Premium landscaping supplies and unmatched service near White Marsh.</p>
             <a href="contact.html" class="btn">Start Your Project</a>
         </section>
@@ -460,6 +446,7 @@
         </section>
 
     </main>
+
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
