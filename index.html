@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Stuckey's Lawn and Garden sets the standard for service. Providing premium mulch, pavers, sod, and contractor services near White Marsh, Maryland.">
-    <title>Stuckey's Lawn & Garden</title>
+    <title>Stuckey's Lawn & Garden | Home</title>
     
     <style>
         :root {
-            /* Apple-Style Minimalist Base */
-            --bg-color: #F5F5F7;       /* Classic Apple light gray background */
-            --surface-color: #FFFFFF;  /* Pure white for cards */
-            --text-primary: #1D1D1F;   /* Off-black for optimal reading */
-            --text-secondary: #86868B; /* Soft gray for secondary text */
+            /* Premium Base Colors */
+            --bg-color: #F8F8F9;       
+            --surface-color: #FFFFFF;  
+            --text-primary: #1D1D1F;   
+            --text-secondary: #86868B; 
             
-            /* Stuckey's Brand Accents */
-            --brand-green: #2E7D32;    /* Refined, modern forest green */
-            --brand-yellow: #FBC02D;   /* Premium gold/yellow */
-            --brand-brown: #3E2723;    /* Deep, sleek brown */
+            /* Richer Brand Accents */
+            --brand-green: #2E7D32;    
+            --brand-green-dark: #1B5E20;
+            --brand-yellow: #FBC02D;   
+            --brand-brown: #3E2723;    
             
             /* UI Elements */
-            --radius-lg: 20px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
-            --shadow-subtle: 0 4px 24px rgba(0, 0, 0, 0.04);
-            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.08);
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --shadow-float: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Reset & Native Typography */
+        /* Reset & System Typography */
         * {
             margin: 0;
             padding: 0;
@@ -37,29 +37,17 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            /* System fonts: identical to Apple's San Francisco */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-primary);
-            line-height: 1.47059;
-            font-weight: 400;
-            letter-spacing: -0.022em;
+            line-height: 1.5;
+            letter-spacing: -0.015em;
         }
 
-        h1, h2, h3 {
-            font-weight: 600;
-            letter-spacing: -0.04em;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
         .container {
             max-width: 1200px;
@@ -67,79 +55,116 @@
             padding: 0 24px;
         }
 
-        /* Glassmorphism Header */
+        /* Keyframe Animations for "Spice" */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* =========================================
+           GLOBAL HEADER (KEEP ON ALL PAGES)
+           ========================================= */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
+            top: 0; left: 0; width: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
             z-index: 9999;
+            transition: var(--transition);
         }
 
         .nav-wrapper {
             display: flex;
             flex-direction: column;
-            padding: 12px 0 0 0;
+            padding: 16px 0 0 0;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 26px;
+            font-weight: 800;
             color: var(--text-primary);
             text-align: center;
-            letter-spacing: -0.05em;
+            letter-spacing: -0.04em;
             margin-bottom: 12px;
         }
 
-        .logo span {
-            color: var(--brand-green);
-        }
+        .logo span { color: var(--brand-green); }
 
-        /* Horizontal Scrolling Nav for Mobile - Ultra Modern */
         nav {
             width: 100%;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
+            scrollbar-width: none; 
         }
-        
-        nav::-webkit-scrollbar {
-            display: none; /* Hide scrollbar Chrome/Safari */
-        }
+        nav::-webkit-scrollbar { display: none; }
 
         nav ul {
             display: flex;
             list-style: none;
-            padding: 0 24px 12px 24px;
-            gap: 24px;
+            padding: 0 24px 16px 24px;
+            gap: 28px;
             white-space: nowrap;
         }
 
         nav a {
-            font-size: 12px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 600;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.05em;
             transition: var(--transition);
+            position: relative;
         }
 
-        nav a:hover {
-            color: var(--brand-green);
+        nav a:hover, nav a.active { color: var(--brand-green); }
+        
+        /* Subtle underline hover effect */
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -4px; left: 0; background-color: var(--brand-green);
+            transition: var(--transition);
+        }
+        nav a:hover::after { width: 100%; }
+
+        /* Desktop Nav Alignment */
+        @media (min-width: 1024px) {
+            .nav-wrapper {
+                flex-direction: row; align-items: center; justify-content: space-between;
+                max-width: 1400px; margin: 0 auto; padding: 16px 32px;
+            }
+            .logo { margin-bottom: 0; }
+            nav { width: auto; overflow-x: visible; }
+            nav ul { padding: 0; margin: 0; gap: 32px; }
         }
 
-        /* Hero Section */
+        /* =========================================
+           PAGE SPECIFIC CONTENT
+           ========================================= */
+        main {
+            margin-top: 100px; /* Offset for fixed header */
+        }
+
+        /* Dynamic Hero Section */
         .hero {
-            /* YOUR PHOTO GOES IN THE URL BELOW */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('YOUR_PHOTO_HERE.jpg');
+            /* REPLACE 'YOUR_PHOTO_HERE.jpg' WITH ACTUAL URL */
+            background: linear-gradient(135deg, rgba(62, 39, 35, 0.8) 0%, rgba(46, 125, 50, 0.4) 100%), url('YOUR_PHOTO_HERE.jpg');
             background-size: cover;
             background-position: center;
-            background-color: var(--brand-brown); /* Fallback */
-            height: 90vh;
+            background-color: var(--brand-brown);
+            border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+            margin: 0 12px;
+            height: 85vh;
             min-height: 600px;
             display: flex;
             flex-direction: column;
@@ -148,155 +173,160 @@
             text-align: center;
             color: #FFFFFF;
             padding: 0 24px;
-            margin-top: 50px; /* Offset for sticky header */
+            box-shadow: var(--shadow-float);
+        }
+
+        @media (min-width: 1024px) {
+            .hero { margin: 0 24px; border-radius: var(--radius-xl); margin-top: 120px; }
+            main { margin-top: 0; }
         }
 
         .hero h1 {
-            font-size: 56px;
-            line-height: 1.07143;
-            max-width: 800px;
-            margin-bottom: 16px;
-            text-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            font-size: clamp(48px, 8vw, 84px);
+            font-weight: 800;
+            line-height: 1.05;
+            max-width: 900px;
+            margin-bottom: 24px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            letter-spacing: -0.03em;
         }
 
         .hero p {
-            font-size: 24px;
+            font-size: clamp(18px, 3vw, 26px);
             font-weight: 400;
-            max-width: 600px;
-            margin-bottom: 40px;
+            max-width: 650px;
+            margin-bottom: 48px;
             color: rgba(255, 255, 255, 0.9);
-            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
         .btn {
-            display: inline-block;
-            background-color: var(--brand-green);
-            color: #FFFFFF;
-            font-size: 17px;
-            font-weight: 600;
-            padding: 16px 32px;
-            border-radius: 980px; /* Perfect pill shape */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--brand-yellow);
+            color: var(--brand-brown);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 980px;
             transition: var(--transition);
             border: none;
             cursor: pointer;
+            box-shadow: 0 8px 20px rgba(251, 192, 45, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .btn:hover {
-            transform: scale(1.02);
-            background-color: #256628;
-            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(251, 192, 45, 0.4);
+            background-color: #FFF176;
         }
 
-        /* Typography Focused Intro Section */
+        /* Typography Focused Intro */
         .intro {
             padding: 120px 24px;
             text-align: center;
-            background-color: var(--surface-color);
+        }
+
+        /* Gradient text to make it pop */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--brand-green), var(--brand-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
 
         .intro h2 {
-            font-size: 48px;
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 800;
             color: var(--text-primary);
-            margin-bottom: 24px;
-            max-width: 800px;
+            margin-bottom: 32px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.1;
         }
 
         .intro p {
-            font-size: 21px;
-            line-height: 1.5;
+            font-size: clamp(18px, 2.5vw, 24px);
             color: var(--text-secondary);
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 24px auto;
         }
 
-        .intro p strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        /* Apple-Style Bento Grid System */
-        .bento-grid {
-            padding: 80px 0 120px 0;
-        }
+        /* Interactive Bento Grid */
+        .bento-grid { padding: 40px 0 120px 0; }
 
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
         }
 
         .card {
             background-color: var(--surface-color);
-            border-radius: var(--radius-lg);
-            padding: 48px 32px;
-            box-shadow: var(--shadow-subtle);
+            border-radius: var(--radius-xl);
+            padding: 48px 40px;
+            box-shadow: var(--shadow-card);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            border: 1px solid rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle hover gradient inside cards */
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(46,125,50,0.03), transparent 70%);
+            opacity: 0; transition: var(--transition); pointer-events: none;
         }
 
         .card:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-4px);
+            box-shadow: var(--shadow-float);
+            transform: translateY(-8px);
         }
+        .card:hover::before { opacity: 1; }
 
+        /* Sleek SVG Icons */
         .card-icon {
-            width: 48px;
-            height: 48px;
-            background-color: rgba(251, 192, 45, 0.15); /* Soft yellow bg */
-            color: var(--brand-yellow);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 24px;
+            width: 56px; height: 56px;
+            background-color: var(--bg-color);
+            border-radius: var(--radius-lg);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 32px;
+            color: var(--brand-green);
+            transition: var(--transition);
         }
 
-        /* Green accent for contact icon */
-        .card:nth-child(3) .card-icon {
-            background-color: rgba(46, 125, 50, 0.1);
-            color: var(--brand-green);
+        .card:hover .card-icon {
+            background-color: var(--brand-green);
+            color: var(--surface-color);
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .card h3 {
-            font-size: 24px;
-            margin-bottom: 12px;
-            color: var(--text-primary);
+            font-size: 24px; font-weight: 700; margin-bottom: 16px; color: var(--text-primary);
         }
 
         .card p {
-            font-size: 17px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            line-height: 1.5;
+            font-size: 17px; color: var(--text-secondary); margin-bottom: 8px;
         }
 
-        .card-link {
-            margin-top: auto;
-            padding-top: 24px;
-            color: var(--brand-green);
-            font-weight: 600;
-            font-size: 17px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+        .card strong { color: var(--text-primary); font-weight: 600; }
 
-        .card-link:hover {
-            color: #1b5e20;
-        }
-
-        /* Footer */
+        /* =========================================
+           GLOBAL FOOTER (KEEP ON ALL PAGES)
+           ========================================= */
         footer {
-            background-color: var(--brand-brown);
+            background-color: var(--text-primary);
             color: #F5F5F7;
-            padding: 64px 24px 40px 24px;
+            padding: 80px 24px 40px 24px;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            margin-top: 40px;
         }
 
         .footer-content {
@@ -309,77 +339,24 @@
         }
 
         .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 24px;
+            font-size: 28px; font-weight: 800; margin-bottom: 32px; color: var(--surface-color);
         }
 
         .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 48px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 64px; max-width: 800px;
         }
 
         .footer-links a {
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            transition: var(--transition);
+            font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+            color: rgba(255,255,255,0.6); transition: var(--transition);
         }
 
-        .footer-links a:hover {
-            color: #FFFFFF;
-        }
+        .footer-links a:hover { color: var(--brand-yellow); }
 
         .copyright {
-            font-size: 12px;
-            color: rgba(255,255,255,0.5);
+            font-size: 14px; color: rgba(255,255,255,0.4);
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 24px;
-            width: 100%;
-        }
-
-        /* Desktop Adjustments */
-        @media (min-width: 1024px) {
-            .nav-wrapper {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                max-width: 1400px;
-                margin: 0 auto;
-                padding: 16px 32px;
-            }
-
-            .logo {
-                margin-bottom: 0;
-            }
-
-            nav {
-                width: auto;
-                overflow-x: visible;
-            }
-
-            nav ul {
-                padding: 0;
-                margin: 0;
-            }
-
-            .hero h1 {
-                font-size: 80px;
-            }
-
-            .hero p {
-                font-size: 28px;
-            }
-
-            .intro {
-                padding: 160px 24px;
-            }
-
-            .intro h2 {
-                font-size: 64px;
-            }
+            padding-top: 32px; width: 100%;
         }
     </style>
 </head>
@@ -392,80 +369,95 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Our Team</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Stones & Pavers</a></li>
-                    <li><a href="#">Sod, Soil, Mulch</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Delivery Service</a></li>
-                    <li><a href="#">Contractor Services</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="stones-pavers.html">Stones & Pavers</a></li>
+                    <li><a href="sod-soil-mulch.html">Sod, Soil, Mulch</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="delivery.html">Delivery Service</a></li>
+                    <li><a href="contractor.html">Contractor Services</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <h1>Set the standard.</h1>
-        <p>Premium landscaping supplies. Unmatched service.</p>
-        <a href="#contact" class="btn">Start Your Project</a>
-    </section>
+    <main id="page-content">
+        
+        <section class="hero animate-up">
+            <h1>Set the standard.</h1>
+            <p>Premium landscaping supplies and unmatched service near White Marsh.</p>
+            <a href="contact.html" class="btn">Start Your Project</a>
+        </section>
 
-    <section class="intro">
-        <h2>Making a big difference for landscapers.</h2>
-        <p>Whether you're looking for mulch to enhance your landscape or retaining wall materials and patio pavers for a complex outdoor project, <strong>Stuckey's Lawn and Garden</strong> has the expertise you need.</p>
-        <p>Our family-owned operation near White Marsh, Maryland has been rooted in the community for over two decades. No waiting in long lines. No hassles. Service second to none.</p>
-    </section>
+        <section class="intro">
+            <h2 class="animate-up delay-1">Making a <span class="text-gradient">big difference</span> for landscapers.</h2>
+            <p class="animate-up delay-2">Whether you're looking for mulch to enhance your landscape or retaining wall materials and patio pavers for a complex outdoor project, <strong>Stuckey's Lawn and Garden</strong> has the expertise you need.</p>
+            <p class="animate-up delay-3">Our family-owned operation has been rooted in the community for over two decades. No waiting in long lines. No hassles. Service second to none.</p>
+        </section>
 
-    <section class="bento-grid bg-color">
-        <div class="container grid-container">
-            
-            <div class="card">
-                <div class="card-icon">⏱</div>
-                <h3>Convenient Hours</h3>
-                <p><strong>Summer Season</strong></p>
-                <p>Mon - Fri: 7 AM – 4:30 PM</p>
-                <p>Saturday: 7 AM – 12 Noon</p>
-                <p>Sunday: Closed</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">📍</div>
-                <h3>Easy to Find</h3>
-                <p>Conveniently located just a few miles north of Beltway Exit 34.</p>
-                <p style="margin-top: 16px; color: var(--text-primary);"><strong>9719 Phila. Rd.</strong><br>Baltimore MD 21237</p>
-                <a href="#" class="card-link">Get Directions &rarr;</a>
-            </div>
-
-            <div class="card" id="contact">
-                <div class="card-icon">📞</div>
-                <h3>We're Here to Help</h3>
-                <p>If you've got a question about your upcoming outdoor project, come to us for answers.</p>
-                <div style="margin-top: 24px;">
-                    <p style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Give us a call</p>
-                    <p style="font-size: 28px; font-weight: 600; color: var(--text-primary);">410-391-0799</p>
+        <section class="bento-grid">
+            <div class="container grid-container">
+                
+                <div class="card animate-up delay-1">
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Convenient Hours</h3>
+                    <p><strong>Summer Season</strong></p>
+                    <p>Mon - Fri: 7 AM – 4:30 PM</p>
+                    <p>Saturday: 7 AM – 12 Noon</p>
+                    <p>Sunday: Closed</p>
                 </div>
+
+                <div class="card animate-up delay-2">
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <h3>Easy to Find</h3>
+                    <p>Conveniently located just a few miles north of Beltway Exit 34.</p>
+                    <p style="margin-top: 16px;"><strong>9719 Phila. Rd.</strong><br>Baltimore MD 21237</p>
+                </div>
+
+                <div class="card animate-up delay-3">
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3>We're Here to Help</h3>
+                    <p>If you've got a question about your upcoming outdoor project, come to us for answers.</p>
+                    <div style="margin-top: auto; padding-top: 24px;">
+                        <a href="tel:4103910799" style="font-size: 32px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em;">410-391-0799</a>
+                    </div>
+                </div>
+
             </div>
+        </section>
 
-        </div>
-    </section>
-
+    </main>
     <footer>
         <div class="footer-content">
             <div class="footer-logo">Stuckey's Lawn & Garden</div>
             <div class="footer-links">
-                <a href="#">Home</a>
-                <a href="#">Our Team</a>
-                <a href="#">Products</a>
-                <a href="#">Stones & Pavers</a>
-                <a href="#">Sod, Soil, Mulch</a>
-                <a href="#">Services</a>
-                <a href="#">Delivery Service</a>
-                <a href="#">Contractor Services</a>
-                <a href="#">FAQ</a>
-                <a href="#">Contact Us</a>
+                <a href="index.html">Home</a>
+                <a href="team.html">Our Team</a>
+                <a href="products.html">Products</a>
+                <a href="stones-pavers.html">Stones & Pavers</a>
+                <a href="sod-soil-mulch.html">Sod, Soil, Mulch</a>
+                <a href="services.html">Services</a>
+                <a href="delivery.html">Delivery Service</a>
+                <a href="contractor.html">Contractor Services</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact Us</a>
             </div>
             <div class="copyright">
                 &copy; 2026 Stuckey's Lawn & Garden. 9719 Phila. Rd., Baltimore MD 21237.
