@@ -75,8 +75,8 @@
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            background-color: var(--brand-brown); /* Solid brown to match the hero perfectly */
-            border-bottom: 1px solid rgba(255,255,255,0.05); /* Almost invisible border */
+            background-color: var(--brand-brown);
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
             z-index: 9999;
             transition: var(--transition);
         }
@@ -171,13 +171,12 @@
         }
 
         .hero {
-            /* Solid brown fallback. When an image is added, an even brown tint is applied so no black gradient appears. */
             background-color: var(--brand-brown); 
             background-image: linear-gradient(rgba(62, 39, 35, 0.65), rgba(62, 39, 35, 0.65)), url('YOUR_PHOTO_HERE.jpg');
             background-size: cover;
             background-position: center;
             margin: 0; 
-            min-height: 100vh; /* Fills the entire screen from top to bottom */
+            min-height: 100vh; 
             padding: 180px 24px 80px 24px; 
             display: flex;
             flex-direction: column;
@@ -188,10 +187,10 @@
         }
 
         .hero h1 {
-            font-size: clamp(40px, 7vw, 76px); /* Scaled gracefully so it fits well */
+            font-size: clamp(40px, 7vw, 76px); 
             font-weight: 800;
             line-height: 1.1;
-            max-width: 1000px; /* Widened so the slogan fits naturally */
+            max-width: 1000px; 
             margin-bottom: 24px;
             text-shadow: 0 4px 16px rgba(0,0,0,0.25); 
             letter-spacing: -0.02em;
@@ -231,7 +230,7 @@
 
         /* Typography Focused Intro */
         .intro {
-            padding: 140px 24px; 
+            padding: 120px 24px 60px 24px; 
             text-align: center;
         }
 
@@ -258,6 +257,51 @@
             color: var(--text-secondary);
             max-width: 750px;
             margin: 0 auto 24px auto;
+        }
+
+        /* NEW: Photo Gallery Feature */
+        .photo-gallery {
+            padding: 20px 24px 80px 24px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1000px; /* Keeps the photos elegantly contained */
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            aspect-ratio: 4 / 3; /* Forces a perfect uniform shape */
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            background-color: var(--surface-color);
+        }
+
+        .gallery-item:hover {
+            box-shadow: var(--shadow-float);
+            transform: translateY(-6px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image fills the space without stretching */
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05); /* Smooth premium zoom effect on hover */
         }
 
         /* Interactive Bento Grid */
@@ -323,7 +367,6 @@
             color: #F5F5F7;
             padding: 90px 24px 60px 24px; 
             margin-top: 40px;
-            /* Corners are now perfectly square and flat */
             border-radius: 0;
         }
 
@@ -395,6 +438,17 @@
             <h2 class="animate-up delay-1">Making a <span class="text-gradient">big difference</span> for landscapers.</h2>
             <p class="animate-up delay-2">Whether you're looking for mulch to enhance your landscape or retaining wall materials and patio pavers for a complex outdoor project, <strong>Stuckey's Lawn and Garden</strong> has the expertise you need.</p>
             <p class="animate-up delay-3">Our family-owned operation has been rooted in the community for over two decades. No waiting in long lines. No hassles. Service second to none.</p>
+        </section>
+
+        <section class="photo-gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item animate-up delay-1">
+                    <img src="Home1.jpg" alt="Stuckey's Lawn and Garden Location">
+                </div>
+                <div class="gallery-item animate-up delay-2">
+                    <img src="Home2.jpg" alt="Premium Landscaping Supplies">
+                </div>
+            </div>
         </section>
 
         <section class="bento-grid">
