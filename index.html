@@ -76,7 +76,7 @@
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            background-color: rgba(62, 39, 35, 0.95);
+            background-color: rgba(62, 39, 35, 0.96); /* Slightly more opaque brown */
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -88,18 +88,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 16px 0 0 0;
+            padding: 24px 0 0 0; /* More breathing room on top */
         }
 
         .logo {
-            margin-bottom: 12px;
+            margin-bottom: 20px; /* Strong spacing below mobile logo */
         }
 
         .nav-logo-img {
-            max-height: 75px; /* Increased mobile logo size */
+            max-height: 90px; /* Substantially larger mobile logo */
             width: auto;
             display: block;
-            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5));
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -118,7 +118,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            padding: 12px 24px 20px 24px;
+            padding: 12px 24px 28px 24px; /* Strong spacing below nav items */
             gap: 32px;
             white-space: nowrap;
         }
@@ -126,9 +126,9 @@
         nav a {
             font-size: 13px;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.75); 
+            color: rgba(255, 255, 255, 0.8); 
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em; /* Slightly more letter-spacing for premium feel */
             transition: var(--transition);
             position: relative;
         }
@@ -145,31 +145,31 @@
         @media (min-width: 1024px) {
             .nav-wrapper {
                 flex-direction: row; align-items: center; justify-content: space-between;
-                max-width: 1400px; margin: 0 auto; padding: 16px 40px;
+                max-width: 1400px; margin: 0 auto; padding: 20px 48px; /* Refined desktop padding */
             }
             .logo { margin-bottom: 0; }
-            .nav-logo-img { max-height: 95px; } /* Much larger desktop logo */
+            .nav-logo-img { max-height: 120px; } /* Massive desktop logo */
             nav { width: auto; overflow-x: visible; }
-            nav ul { padding: 0; margin: 0; gap: 36px; }
+            nav ul { padding: 0; margin: 0; gap: 40px; } /* Clean, spacious desktop nav */
         }
 
         /* =========================================
            PAGE SPECIFIC CONTENT
            ========================================= */
         main {
-            margin-top: 130px; /* Adjusted to clear the taller header */
+            margin-top: 170px; /* Offset for the taller header on mobile */
         }
 
         .hero {
-            /* FIXED "POOP" GRADIENT: Now a sleek espresso to charcoal cinematic fade */
-            background: linear-gradient(to bottom, rgba(40, 25, 20, 0.6) 0%, rgba(15, 15, 15, 0.85) 100%), url('YOUR_PHOTO_HERE.jpg');
+            /* SEAMLESS HERO BLEND: Hero fallback blends perfectly from the brown header down to charcoal black */
+            background: linear-gradient(to bottom, rgba(62, 39, 35, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%), url('YOUR_PHOTO_HERE.jpg');
             background-size: cover;
             background-position: center;
-            background-color: #2A1F1C; /* Premium dark espresso fallback color */
+            background-color: var(--brand-brown); /* Primary fallback is the store brown */
             border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-            margin: 0 12px;
-            height: 85vh;
-            min-height: 600px;
+            margin: 0; /* No white edges */
+            height: 90vh; /* Taller hero */
+            min-height: 700px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -178,10 +178,24 @@
             color: #FFFFFF;
             padding: 0 24px;
             box-shadow: var(--shadow-float);
+            position: relative; /* For blending */
+        }
+
+        /* Seamlessly extend the brown header color down into the hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px; /* Bleed up into the header area */
+            left: 0;
+            width: 100%;
+            height: 200px; /* Deep blend area */
+            background: linear-gradient(to bottom, var(--brand-brown), rgba(62, 39, 35, 0));
+            z-index: -1; /* Place below hero content */
+            pointer-events: none; /* Let clicks pass through */
         }
 
         @media (min-width: 1024px) {
-            .hero { margin: 0 24px; border-radius: var(--radius-xl); margin-top: 150px; }
+            .hero { margin: 0; border-radius: var(--radius-xl); margin-top: 160px; } /* Seamless full-width blend */
             main { margin-top: 0; }
         }
 
@@ -191,7 +205,7 @@
             line-height: 1.05;
             max-width: 900px;
             margin-bottom: 24px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Stronger shadow for premium contrast */
             letter-spacing: -0.03em;
         }
 
@@ -200,7 +214,7 @@
             font-weight: 400;
             max-width: 650px;
             margin-bottom: 48px;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .btn {
@@ -216,20 +230,20 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(251, 192, 45, 0.3);
+            box-shadow: 0 8px 20px rgba(251, 192, 45, 0.4);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .btn:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(251, 192, 45, 0.4);
+            box-shadow: 0 12px 25px rgba(251, 192, 45, 0.5);
             background-color: #FFF176;
         }
 
         /* Typography Focused Intro */
         .intro {
-            padding: 120px 24px;
+            padding: 140px 24px; /* More breathing room for intro section */
             text-align: center;
         }
 
@@ -319,7 +333,7 @@
         footer {
             background-color: var(--brand-brown);
             color: #F5F5F7;
-            padding: 80px 24px 40px 24px;
+            padding: 90px 24px 60px 24px; /* More breathing room in footer */
             border-radius: var(--radius-xl) var(--radius-xl) 0 0;
             margin-top: 40px;
         }
@@ -334,12 +348,12 @@
         }
 
         .footer-logo {
-            margin-bottom: 40px;
+            margin-bottom: 60px; /* Strong spacing below footer logo */
         }
 
         .footer-logo img {
-            max-height: 130px; /* Much larger footer logo */
-            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.4));
+            max-height: 160px; /* Massive footer logo */
+            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5));
         }
 
         .footer-links {
@@ -446,7 +460,6 @@
         </section>
 
     </main>
-
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
