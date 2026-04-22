@@ -17,7 +17,7 @@
             /* Stuckey's Brand Accents */
             --brand-green: #2E7D32;    
             --brand-yellow: #FBC02D;   
-            --brand-brown: #3E2723;   
+            --brand-brown: #3E2723; /* The signature store brown */   
             
             /* UI Elements */
             --radius-xl: 24px;
@@ -75,10 +75,8 @@
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            background-color: rgba(62, 39, 35, 0.85); /* Slight transparency to let hero bleed through */
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background-color: var(--brand-brown); /* Solid brown to match the hero perfectly */
+            border-bottom: 1px solid rgba(255,255,255,0.05); /* Almost invisible border */
             z-index: 9999;
             transition: var(--transition);
         }
@@ -98,7 +96,7 @@
             max-height: 80px; 
             width: auto;
             display: block;
-            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5));
+            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3));
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -123,11 +121,11 @@
         }
 
         nav a {
-            font-size: 12px; /* Reduced to fit all links */
+            font-size: 12px; 
             font-weight: 600;
             color: rgba(255, 255, 255, 0.85); 
             text-transform: uppercase;
-            letter-spacing: 0.04em; /* Tightened letter spacing */
+            letter-spacing: 0.04em; 
             transition: var(--transition);
             position: relative;
         }
@@ -141,13 +139,12 @@
         }
         nav a:hover::after, nav a.active::after { width: 100%; }
 
-        /* Fixed Desktop Nav Alignment */
         @media (min-width: 1024px) {
             .nav-wrapper {
                 flex-direction: row; 
                 align-items: center; 
-                justify-content: space-between; /* Pushes Logo Left, Nav Right */
-                max-width: 100%; /* Use full width */
+                justify-content: space-between; 
+                max-width: 100%; 
                 padding: 16px 40px; 
             }
             .logo { margin-bottom: 0; flex-shrink: 0; }
@@ -156,13 +153,13 @@
             nav ul { 
                 padding: 0; 
                 margin: 0; 
-                gap: 18px; /* Perfectly spaced to fit all 10 links on screen */
+                gap: 18px; 
                 flex-wrap: nowrap;
             } 
         }
 
         @media (min-width: 1400px) {
-            nav ul { gap: 28px; } /* Gives more breathing room on massive screens */
+            nav ul { gap: 28px; } 
             nav a { font-size: 13px; }
         }
 
@@ -170,19 +167,18 @@
            PAGE SPECIFIC CONTENT
            ========================================= */
         main {
-            margin-top: 0; /* Removed margin so hero slides UNDER the header */
+            margin-top: 0; 
         }
 
         .hero {
-            /* Full edge-to-edge bleed, no white corners */
-            background: linear-gradient(to bottom, var(--brand-brown) 0%, rgba(20, 20, 20, 0.9) 100%), url('YOUR_PHOTO_HERE.jpg');
+            /* Solid brown fallback. When an image is added, an even brown tint is applied so no black gradient appears. */
+            background-color: var(--brand-brown); 
+            background-image: linear-gradient(rgba(62, 39, 35, 0.65), rgba(62, 39, 35, 0.65)), url('YOUR_PHOTO_HERE.jpg');
             background-size: cover;
             background-position: center;
-            background-color: var(--brand-brown); 
             margin: 0; 
-            border-radius: 0; /* NUKED THE ROUNDED CORNERS */
-            min-height: 90vh;
-            padding: 180px 24px 80px 24px; /* Huge top padding to push text below the transparent header */
+            min-height: 100vh; /* Fills the entire screen from top to bottom */
+            padding: 180px 24px 80px 24px; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -192,13 +188,13 @@
         }
 
         .hero h1 {
-            font-size: clamp(48px, 8vw, 84px);
+            font-size: clamp(40px, 7vw, 76px); /* Scaled gracefully so it fits well */
             font-weight: 800;
-            line-height: 1.05;
-            max-width: 900px;
+            line-height: 1.1;
+            max-width: 1000px; /* Widened so the slogan fits naturally */
             margin-bottom: 24px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5); 
-            letter-spacing: -0.03em;
+            text-shadow: 0 4px 16px rgba(0,0,0,0.25); 
+            letter-spacing: -0.02em;
         }
 
         .hero p {
@@ -326,8 +322,9 @@
             background-color: var(--brand-brown);
             color: #F5F5F7;
             padding: 90px 24px 60px 24px; 
-            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
             margin-top: 40px;
+            /* Corners are now perfectly square and flat */
+            border-radius: 0;
         }
 
         .footer-content {
@@ -340,7 +337,7 @@
         }
 
         .footer-logo { margin-bottom: 60px; }
-        .footer-logo img { max-height: 160px; filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.5)); }
+        .footer-logo img { max-height: 160px; filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)); }
 
         .footer-links {
             display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 64px; max-width: 800px;
