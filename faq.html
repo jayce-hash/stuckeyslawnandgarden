@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Frequently asked questions about Stuckey's Lawn and Garden, including delivery, product coverage, stock availability, and location in White Marsh.">
+    <title>Stuckey's Lawn & Garden | FAQ</title>
+    
+    <style>
+        :root {
+            /* Premium Base Colors */
+            --bg-color: #F8F8F9;       
+            --surface-color: #FFFFFF;  
+            --text-primary: #1D1D1F;   
+            --text-secondary: #86868B; 
+            
+            /* Stuckey's Brand Accents */
+            --brand-green: #2E7D32;    
+            --brand-yellow: #FBC02D;   
+            --brand-brown: #3E2723;   
+            
+            /* UI Elements */
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --shadow-float: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Reset & System Typography */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.5; letter-spacing: -0.015em; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Keyframe Animations */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-up { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
+
+        /* =========================================
+           GLOBAL HEADER
+           ========================================= */
+        header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--brand-brown); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 9999; transition: var(--transition); }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; padding: 16px 0 0 0; }
+        .logo { margin-bottom: 16px; }
+        .nav-logo-img { max-height: 80px; width: auto; display: block; filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .nav-logo-img:hover { transform: scale(1.03); }
+        nav { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
+        nav ul { display: flex; list-style: none; padding: 8px 24px 20px 24px; gap: 24px; white-space: nowrap; }
+        nav a { font-size: 12px; font-weight: 600; color: rgba(255, 255, 255, 0.85); text-transform: uppercase; letter-spacing: 0.04em; transition: var(--transition); position: relative; }
+        nav a:hover, nav a.active { color: var(--brand-yellow); }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 0; background-color: var(--brand-yellow); transition: var(--transition); }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+
+        @media (min-width: 1024px) {
+            .nav-wrapper { flex-direction: row; align-items: center; justify-content: space-between; max-width: 100%; padding: 16px 40px; }
+            .logo { margin-bottom: 0; flex-shrink: 0; }
+            .nav-logo-img { max-height: 100px; } 
+            nav { width: auto; overflow-x: visible; }
+            nav ul { padding: 0; margin: 0; gap: 18px; flex-wrap: nowrap; } 
+        }
+        @media (min-width: 1400px) { nav ul { gap: 28px; } nav a { font-size: 13px; } }
+
+        /* =========================================
+           PAGE SPECIFIC CONTENT (FAQ)
+           ========================================= */
+        main { margin-top: 0; }
+        .inner-hero { background-color: var(--brand-brown); padding: 200px 24px 100px 24px; text-align: center; color: #FFFFFF; }
+        .inner-hero h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin: 0 auto; max-width: 1000px; }
+
+        /* Layout */
+        .page-content-layout { padding: 80px 0 100px 0; }
+        .content-container { max-width: 900px; margin: 0 auto; }
+
+        .inline-link { color: var(--brand-green); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(46, 125, 50, 0.3); text-underline-offset: 4px; transition: var(--transition); }
+        .inline-link:hover { color: var(--brand-brown); text-decoration-color: var(--brand-brown); }
+
+        /* Sleek Accordion FAQ */
+        details {
+            background-color: var(--surface-color);
+            border-radius: var(--radius-lg);
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+
+        details:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        summary {
+            padding: 24px;
+            font-size: clamp(17px, 2vw, 19px);
+            font-weight: 700;
+            color: var(--text-primary);
+            cursor: pointer;
+            list-style: none; /* Hide default arrow */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+            letter-spacing: -0.01em;
+            transition: color 0.3s ease;
+        }
+
+        summary::-webkit-details-marker {
+            display: none; /* Hide Safari arrow */
+        }
+
+        /* Custom Plus/Minus Icon */
+        summary::after {
+            content: '+';
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--brand-green);
+            transition: transform 0.3s ease;
+            margin-left: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            color: var(--brand-green);
+        }
+
+        details[open] summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        .answer-content {
+            padding: 24px;
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .answer-content p {
+            margin-bottom: 16px;
+        }
+        .answer-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Clean Table inside FAQ */
+        .spec-table { width: 100%; max-width: 400px; margin-top: 16px; border-collapse: collapse; border: 1px solid rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
+        .spec-table th, .spec-table td { padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); text-align: left; }
+        .spec-table th { background-color: var(--bg-color); font-weight: 600; color: var(--brand-brown); font-size: 14px; }
+        .spec-table td { font-size: 15px; color: var(--text-primary); }
+
+        /* Landscaper Callout Box */
+        .contractor-callout {
+            background: linear-gradient(135deg, var(--surface-color) 0%, #F1F8E9 100%);
+            border-left: 6px solid var(--brand-green);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            margin-top: 80px;
+            box-shadow: var(--shadow-float);
+            text-align: center;
+        }
+
+        .contractor-callout h3 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--brand-green);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .contractor-callout p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--brand-brown);
+            color: var(--surface-color);
+            font-size: 15px;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 980px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(62, 39, 35, 0.3);
+            background-color: #2D1A16;
+        }
+
+        /* =========================================
+           GLOBAL FOOTER
+           ========================================= */
+        footer { background-color: var(--brand-brown); color: #F5F5F7; padding: 90px 24px 60px 24px; border-radius: 0; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .footer-logo { margin-bottom: 60px; }
+        .footer-logo img { max-height: 160px; filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)); }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 64px; max-width: 800px; }
+        .footer-links a { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.7); transition: var(--transition); }
+        .footer-links a:hover { color: var(--brand-yellow); }
+        .copyright { font-size: 14px; color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="StuckeysLogo.png" alt="Stuckey's Lawn & Garden" class="nav-logo-img">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="stones-pavers.html">Stones & Pavers</a></li>
+                    <li><a href="sod-soil-mulch.html">Sod, Soil, Mulch</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="delivery.html">Delivery Service</a></li>
+                    <li><a href="contractor.html">Contractor Services</a></li>
+                    <li><a href="faq.html" class="active">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="page-content">
+        
+        <section class="inner-hero animate-up">
+            <div class="container">
+                <h1>Frequently Asked Questions.</h1>
+            </div>
+        </section>
+
+        <section class="page-content-layout">
+            <div class="container content-container">
+                
+                <div class="animate-up delay-1">
+                    
+                    <details>
+                        <summary>How much does a yard of material cover?</summary>
+                        <div class="answer-content">
+                            <p>The area covered by a cubic yard of material depends upon the thickness of the layer. In general, one cubic yard covers as follows:</p>
+                            <table class="spec-table">
+                                <thead>
+                                    <tr>
+                                        <th>Thickness</th>
+                                        <th>Coverage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>1"</td><td>324 sq. ft.</td></tr>
+                                    <tr><td>2"</td><td>162 sq. ft.</td></tr>
+                                    <tr><td>3"</td><td>108 sq. ft.</td></tr>
+                                    <tr><td>4"</td><td>81 sq. ft.</td></tr>
+                                    <tr><td>5"</td><td>65 sq. ft.</td></tr>
+                                    <tr><td>6"</td><td>54 sq. ft.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Is there a minimum amount that you will deliver?</summary>
+                        <div class="answer-content">
+                            <p>No, there is no minimum amount for <a href="delivery.html" class="inline-link">delivery</a>, but there is a delivery charge depending on the distance from our location to yours.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>How far in advance do I need to place my order for delivery?</summary>
+                        <div class="answer-content">
+                            <p>We try to make all of our deliveries within one day, but the more notice we have, the better. Due to stock and previously scheduled delivery considerations, we will be able to give you more specific information if you call us directly. You may reach us at <strong>410-391-0799</strong>.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Does mulch attract termites?</summary>
+                        <div class="answer-content">
+                            <p>No, there is no kind of mulch that attracts termites. In general, every acre of land (in this area of the country) contains colonies of termites; the presence of mulch neither attracts nor causes them. Termites require wood of at least a 2" thickness to build their nests. As a result, mulch is not sufficient for their needs and they will not nest in it.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Does Stuckey's install patios and retaining walls?</summary>
+                        <div class="answer-content">
+                            <p>No, we do not install. However, we work with several excellent, qualified <a href="contractor.html" class="inline-link">contractors</a> and we will be happy to refer you to one or more of them to help with your installation project.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Does Stuckey's carry fresh sod?</summary>
+                        <div class="answer-content">
+                            <p>Yes, we carry <a href="sod-soil-mulch.html" class="inline-link">fresh sod</a> whenever it is available. We receive new deliveries every Friday, but special orders may be available on other weekdays. The sod is 16" x 45", or approximately 5 sq. ft. Prices vary depending on quantity purchased.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>What are Stuckey's hours of operation?</summary>
+                        <div class="answer-content">
+                            <p>Our hours vary with the seasons. For the summer season, our hours are:</p>
+                            <p><strong>Monday to Friday:</strong> 7:00 AM - 4:30 PM<br>
+                               <strong>Saturday:</strong> 7:00 AM - 12:00 Noon<br>
+                               <strong>Sunday:</strong> Closed</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>How many tons are in a yard of gravel?</summary>
+                        <div class="answer-content">
+                            <p>When we talk about a "yard" of gravel (or other material), we are really referring to a cubic yard. There are approximately 1.25 to 1.5 tons in a cubic yard of gravel.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Do you keep most of your products in stock?</summary>
+                        <div class="answer-content">
+                            <p>We try to keep a large selection of products in our yard, but it is hard to keep everything in stock all the time. Most products not currently in stock are available within a day or two when ordered.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Where is Stuckey's located?</summary>
+                        <div class="answer-content">
+                            <p>We are conveniently located on Philadelphia Road (Rt. 7) in Rosedale, between Middle River Road and Campbell Blvd.</p>
+                            <p><strong>9719 Phila. Rd., Baltimore MD 21237</strong></p>
+                            <p>Please visit our <a href="contact.html" class="inline-link">Contact page</a> to view a map of our location.</p>
+                        </div>
+                    </details>
+
+                </div>
+
+                <div class="contractor-callout animate-up delay-2">
+                    <h3>Are You a Local Landscaper?</h3>
+                    <p>Please contact us regarding your next project. Stuckey's offers the most convenient service to landscaping contractors, and our prices are highly competitive. Give us a call and see how we can help you build your business and provide better service to your customers.</p>
+                    <a href="contractor.html" class="btn">View Contractor Services</a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="StuckeysLogo.png" alt="Stuckey's Lawn & Garden">
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="team.html">Our Team</a>
+                <a href="products.html">Products</a>
+                <a href="stones-pavers.html">Stones & Pavers</a>
+                <a href="sod-soil-mulch.html">Sod, Soil, Mulch</a>
+                <a href="services.html">Services</a>
+                <a href="delivery.html">Delivery Service</a>
+                <a href="contractor.html">Contractor Services</a>
+                <a href="faq.html" class="active">FAQ</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Stuckey's Lawn & Garden. 9719 Phila. Rd., Baltimore MD 21237.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
