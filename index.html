@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Family-owned Stuckey's Lawn and Garden in Baltimore, MD provides premium mulch, soil, sod, pavers, and stone. Expert delivery and contractor services near White Marsh.">
+    <meta name="keywords" content="Stuckey's Lawn and Garden, landscaping supplies Baltimore, mulch delivery Rosedale MD, patio pavers, sod, topsoil, contractor landscaping services">
+    <title>Stuckey's Lawn and Garden | Landscaping Supplies & Delivery in Baltimore, MD</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Brand Colors - Highly repeatable across all media */
+        :root {
+            /* Primary: Forest Green */
+            --primary-color: #2E7D32; 
+            --primary-dark: #1B5E20;
+            /* Secondary: Soil Brown */
+            --secondary-color: #5D4037; 
+            /* Accent: Stone Gray */
+            --accent-color: #757575; 
+            /* Backgrounds & Text */
+            --bg-color: #F9FBE7; 
+            --section-light: #FFFFFF;
+            --text-color: #212121;
+            --white: #FFFFFF;
+            
+            --font-heading: 'Merriweather', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        /* Mobile-First Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            line-height: 1.2;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #3E2723;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--section-light);
+            border-bottom: 4px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-top {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 8px 10px;
+            font-size: 0.9rem;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+            display: block;
+            font-size: 1.4rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 8px solid var(--secondary-color);
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Main Content Sections */
+        section {
+            padding: 50px 0;
+        }
+
+        .section-light {
+            background-color: var(--section-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--bg-color);
+            border: 1px solid #E0E0E0;
+            border-top: 4px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 6px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--primary-dark);
+        }
+
+        /* Contact & Hours Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .contact-grid h2, .contact-grid h3 {
+            color: var(--bg-color);
+        }
+
+        .contact-box {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 6px;
+        }
+
+        .contact-box a {
+            color: var(--bg-color);
+            font-size: 1.2rem;
+        }
+
+        .hours-list {
+            list-style-type: none;
+            margin-top: 15px;
+        }
+
+        .hours-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive Design: Tablet & Desktop */
+        @media (min-width: 768px) {
+            .btn {
+                width: auto;
+                margin-right: 15px;
+            }
+
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 15px 40px;
+            }
+            
+            .logo {
+                margin-bottom: 0;
+                text-align: left;
+            }
+
+            .logo span {
+                display: inline;
+                font-size: 1.8rem;
+                margin-left: 5px;
+            }
+
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+                text-align: left;
+            }
+            
+            .contact-box {
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1100px;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .about-flex {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 50px;
+            }
+
+            .about-text {
+                flex: 1;
+            }
+            
+            .about-highlights {
+                flex: 1;
+                background-color: var(--bg-color);
+                padding: 30px;
+                border-left: 5px solid var(--primary-color);
+                border-radius: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <strong>Call Us Today: <a href="tel:4103910799" style="color: var(--white); text-decoration: underline;">410-391-0799</a></strong> &nbsp;|&nbsp; 9719 Phila. Rd., Baltimore MD 21237
+        </div>
+        <div class="nav-container container">
+            <div class="logo">
+                Stuckey's <span>Lawn & Garden</span>
+            </div>
+            <nav aria-label="Main Navigation">
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Hours & Location</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>We Set the Standard for Service.</h1>
+                <p>A family-owned, small operation making a BIG difference for landscapers and homeowners near White Marsh, Maryland.</p>
+                <div>
+                    <a href="#contact" class="btn">Get Directions</a>
+                    <a href="#products" class="btn btn-secondary">View Products</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-light">
+            <div class="container about-flex">
+                <div class="about-text">
+                    <h2 class="section-title" style="text-align: left;">Expertise You Can Count On</h2>
+                    <p>For over two decades, Stuckey's Lawn and Garden has been helping folks in the Baltimore and Rosedale areas with their lawn, garden, and landscaping needs. Whether you're a homeowner looking for mulch to enhance your landscape or a professional contractor needing retaining wall materials and patio pavers for a complex outdoor project, we have the knowledge and experience to help you get the job done correctly.</p>
+                    <p>If you have a question, our experts will answer it. No waiting in long lines. No hassles. Our service is second to none, and we guarantee it.</p>
+                </div>
+                <div class="about-highlights">
+                    <h3>Why Choose Stuckey's?</h3>
+                    <p><strong>Family Owned:</strong> Rooted in the community for over 20 years.</p>
+                    <p><strong>Expert Advice:</strong> Fast answers to your outdoor project questions.</p>
+                    <p><strong>No Hassles:</strong> Skip the long lines at big-box hardware stores.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="products">
+            <div class="container">
+                <h2 class="section-title">Premium Landscaping Supplies</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Sod, Soil & Mulch</h3>
+                        <p>Enhance the health and appearance of your landscape with our premium topsoil, fresh sod, and a wide variety of colored and natural bulk mulches.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Stones & Pavers</h3>
+                        <p>Build beautiful patios, walkways, and sturdy retaining walls. We carry a vast selection of high-quality pavers and decorative natural stone.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Delivery Services</h3>
+                        <p>Need it brought directly to your site? We offer fast, reliable delivery of all bulk materials to your home or job site exactly when you need it.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Contractor Services</h3>
+                        <p>We proudly cater to professional landscapers with competitive pricing, expert assistance, and a dedication to taking care of the logistics for you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-light">
+            <div class="container">
+                <h2 class="section-title">Visit Us Today</h2>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto;">We are conveniently located just a few miles north of Beltway Exit 34. Come on down to our neck of the woods and let us help you with your next outdoor project!</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-box">
+                        <h3>Location & Contact</h3>
+                        <p style="margin-top: 15px; margin-bottom: 5px;"><strong>Store Address:</strong></p>
+                        <address style="font-style: normal; margin-bottom: 20px;">
+                            9719 Phila. Rd.<br>
+                            Baltimore, MD 21237
+                        </address>
+                        <p style="margin-bottom: 5px;"><strong>Give Us A Call:</strong></p>
+                        <a href="tel:4103910799">410-391-0799</a>
+                    </div>
+                    <div class="contact-box">
+                        <h3>Convenient Hours</h3>
+                        <p style="margin-top: 15px;"><strong>Summer Season Schedule:</strong></p>
+                        <ul class="hours-list">
+                            <li><strong>Monday - Friday:</strong> 7:00 AM - 4:30 PM</li>
+                            <li><strong>Saturday:</strong> 7:00 AM - 12:00 Noon</li>
+                            <li><strong>Sunday:</strong> Closed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Stuckey's Lawn & Garden. All Rights Reserved.</p>
+            <p style="margin-top: 15px;">
+                <a href="#about">About</a> | 
+                <a href="#products">Products</a> | 
+                <a href="#contact">Location & Hours</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
