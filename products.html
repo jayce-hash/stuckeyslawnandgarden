@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Stuckey's is your authorized supplier for Cambridge Pavingstones, rich top soil, seed, mulch, and natural stone in Baltimore.">
+    <title>Stuckey's Lawn & Garden | Products</title>
+    
+    <style>
+        :root {
+            /* Premium Base Colors */
+            --bg-color: #F8F8F9;       
+            --surface-color: #FFFFFF;  
+            --text-primary: #1D1D1F;   
+            --text-secondary: #86868B; 
+            
+            /* Stuckey's Brand Accents */
+            --brand-green: #2E7D32;    
+            --brand-yellow: #FBC02D;   
+            --brand-brown: #3E2723;   
+            
+            /* UI Elements */
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --shadow-float: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Reset & System Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+            letter-spacing: -0.015em;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* =========================================
+           GLOBAL HEADER
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background-color: var(--brand-brown); 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            z-index: 9999;
+            transition: var(--transition);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 0 0 0;
+        }
+
+        .logo { margin-bottom: 16px; }
+
+        .nav-logo-img {
+            max-height: 80px; 
+            width: auto;
+            display: block;
+            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3));
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-logo-img:hover { transform: scale(1.03); }
+
+        nav {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; 
+        }
+        nav::-webkit-scrollbar { display: none; }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 8px 24px 20px 24px; 
+            gap: 24px;
+            white-space: nowrap;
+        }
+
+        nav a {
+            font-size: 12px; 
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85); 
+            text-transform: uppercase;
+            letter-spacing: 0.04em; 
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active { color: var(--brand-yellow); }
+        
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -6px; left: 0; background-color: var(--brand-yellow);
+            transition: var(--transition);
+        }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+
+        @media (min-width: 1024px) {
+            .nav-wrapper {
+                flex-direction: row; 
+                align-items: center; 
+                justify-content: space-between; 
+                max-width: 100%; 
+                padding: 16px 40px; 
+            }
+            .logo { margin-bottom: 0; flex-shrink: 0; }
+            .nav-logo-img { max-height: 100px; } 
+            nav { width: auto; overflow-x: visible; }
+            nav ul { padding: 0; margin: 0; gap: 18px; flex-wrap: nowrap; } 
+        }
+
+        @media (min-width: 1400px) {
+            nav ul { gap: 28px; } 
+            nav a { font-size: 13px; }
+        }
+
+        /* =========================================
+           PAGE SPECIFIC CONTENT (PRODUCTS)
+           ========================================= */
+        main { margin-top: 0; }
+
+        .inner-hero {
+            background-color: var(--brand-brown);
+            padding: 200px 24px 100px 24px; 
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .inner-hero h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 0 auto;
+            max-width: 1000px;
+        }
+
+        /* Text Layout */
+        .page-content-layout {
+            padding: 80px 0 60px 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .lead-text {
+            font-size: clamp(24px, 3.5vw, 32px);
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            border-left: 4px solid var(--brand-green);
+            padding-left: 24px;
+        }
+
+        .body-text {
+            font-size: clamp(17px, 2vw, 20px);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .body-text p {
+            margin-bottom: 24px;
+        }
+
+        .inline-link {
+            color: var(--brand-green);
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-color: rgba(46, 125, 50, 0.3);
+            text-underline-offset: 4px;
+            transition: var(--transition);
+        }
+
+        .inline-link:hover {
+            color: var(--brand-brown);
+            text-decoration-color: var(--brand-brown);
+        }
+
+        @media (min-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr 1.2fr;
+                gap: 64px;
+                align-items: start;
+            }
+            .lead-text {
+                position: sticky;
+                top: 160px; 
+            }
+        }
+
+        /* Photo Gallery Feature */
+        .photo-gallery {
+            padding: 20px 24px 80px 24px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1000px; 
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            aspect-ratio: 4 / 3; 
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            background-color: var(--surface-color);
+        }
+
+        .gallery-item:hover {
+            box-shadow: var(--shadow-float);
+            transform: translateY(-6px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05); 
+        }
+
+        /* Category Cards */
+        .category-section {
+            padding: 40px 0 80px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border-radius: var(--radius-xl);
+            padding: 48px 40px;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.03);
+            text-decoration: none;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-float);
+            transform: translateY(-8px);
+            border-color: var(--brand-green);
+        }
+
+        .card h3 { 
+            font-size: 28px; 
+            font-weight: 800; 
+            color: var(--brand-brown); 
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .card span {
+            color: var(--brand-green);
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 16px;
+        }
+
+        /* Pricing Callout Banner */
+        .pricing-banner {
+            background-color: #EFEBE9; /* Soft stone/brown tint */
+            border-radius: var(--radius-xl);
+            padding: 56px 24px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto 120px auto;
+        }
+
+        .pricing-banner h3 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .pricing-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--brand-brown);
+        }
+
+        .pricing-list li {
+            padding: 12px 24px;
+            background-color: var(--surface-color);
+            border-radius: 980px;
+            display: inline-block;
+            margin: 0 auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .pricing-list strong {
+            color: var(--brand-green);
+        }
+
+        @media (min-width: 768px) {
+            .pricing-list {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* =========================================
+           GLOBAL FOOTER
+           ========================================= */
+        footer {
+            background-color: var(--brand-brown);
+            color: #F5F5F7;
+            padding: 90px 24px 60px 24px; 
+            border-radius: 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo { margin-bottom: 60px; }
+        .footer-logo img { max-height: 160px; filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)); }
+
+        .footer-links {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 64px; max-width: 800px;
+        }
+
+        .footer-links a {
+            font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+            color: rgba(255,255,255,0.7); transition: var(--transition);
+        }
+
+        .footer-links a:hover { color: var(--brand-yellow); }
+
+        .copyright {
+            font-size: 14px; color: rgba(255,255,255,0.4);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 32px; width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="StuckeysLogo.png" alt="Stuckey's Lawn & Garden" class="nav-logo-img">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="products.html" class="active">Products</a></li>
+                    <li><a href="stones-pavers.html">Stones & Pavers</a></li>
+                    <li><a href="sod-soil-mulch.html">Sod, Soil, Mulch</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="delivery.html">Delivery Service</a></li>
+                    <li><a href="contractor.html">Contractor Services</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="page-content">
+        
+        <section class="inner-hero animate-up">
+            <div class="container">
+                <h1>Authorized Supplier for Cambridge Pavingstones & More.</h1>
+            </div>
+        </section>
+
+        <section class="page-content-layout">
+            <div class="container">
+                <div class="content-grid">
+                    
+                    <div class="lead-text animate-up delay-1">
+                        At Stuckey's, you'll find all the brand names you know and trust in landscaping and hardscaping, including high quality Cambridge Pavingstones and retaining wall supplies. 
+                    </div>
+                    
+                    <div class="body-text animate-up delay-2">
+                        <p>Many are in stock and ready for pick-up or delivery. Call us today at <strong>410-391-0799</strong>. We'll let you know what's in stock that you can pick up today, and what items can be ordered for <a href="delivery.html" class="inline-link">convenient delivery</a>.</p>
+                        
+                        <p>That goes for more than just pavers and other hardscape supplies. For gardening and minor re-grading we have rich top soil, seed, fertilizers and straw — or freshly delivered sod, for those who require a finished look more immediately. We also carry a large selection of mulches, stones of all sizes and colors, lava rocks, marble chips, pebbles and sand, as well as both natural and cast stepping stones.</p>
+                        
+                        <p>Whatever your lawn and garden project, we can help with products you can rely on for long-lasting beauty and durability. Please visit our specific product pages below, or <a href="contact.html" class="inline-link">contact us with your question</a> today.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item animate-up delay-1">
+                    <img src="Products1.jpg" alt="Cambridge Pavingstones Display">
+                </div>
+                <div class="gallery-item animate-up delay-2">
+                    <img src="Products2.jpg" alt="Stuckey's Product Yard">
+                </div>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <div class="container category-grid">
+                
+                <a href="stones-pavers.html" class="card animate-up delay-1">
+                    <h3>Stones and Pavers</h3>
+                    <p style="margin: 0; color: var(--text-secondary);">Browse our selection of hardscaping materials.</p>
+                    <span>View Category &rarr;</span>
+                </a>
+
+                <a href="sod-soil-mulch.html" class="card animate-up delay-2">
+                    <h3>Sod, Soil and Mulch</h3>
+                    <p style="margin: 0; color: var(--text-secondary);">Everything you need for a lush, healthy yard.</p>
+                    <span>View Category &rarr;</span>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="container animate-up delay-3">
+            <div class="pricing-banner">
+                <h3>Looking for Current Pricing?</h3>
+                <p style="margin-bottom: 32px; color: var(--text-secondary); font-size: 18px;">Due to changing inventory, please call us directly for the most accurate rates.</p>
+                
+                <ul class="pricing-list">
+                    <li>Bulk Materials Price List &mdash; <strong>Please Call</strong></li>
+                    <li>Bagged Materials Price List &mdash; <strong>Please Call</strong></li>
+                    <li>Large Stone Pricing List &mdash; <strong>Please Call</strong></li>
+                </ul>
+                
+                <div style="margin-top: 40px;">
+                    <a href="tel:4103910799" style="font-size: 28px; font-weight: 800; color: var(--brand-brown);">410-391-0799</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="StuckeysLogo.png" alt="Stuckey's Lawn & Garden">
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="team.html">Our Team</a>
+                <a href="products.html">Products</a>
+                <a href="stones-pavers.html">Stones & Pavers</a>
+                <a href="sod-soil-mulch.html">Sod, Soil, Mulch</a>
+                <a href="services.html">Services</a>
+                <a href="delivery.html">Delivery Service</a>
+                <a href="contractor.html">Contractor Services</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Stuckey's Lawn & Garden. 9719 Phila. Rd., Baltimore MD 21237.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
