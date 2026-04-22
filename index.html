@@ -71,13 +71,12 @@
         .delay-3 { animation-delay: 0.3s; }
 
         /* =========================================
-           GLOBAL HEADER (DARK GLASSMORPHISM)
+           GLOBAL HEADER
            ========================================= */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            /* Rich brown with slight transparency */
-            background-color: rgba(62, 39, 35, 0.92);
+            background-color: rgba(62, 39, 35, 0.95);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -89,18 +88,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 12px 0 0 0;
+            padding: 16px 0 0 0;
         }
 
         .logo {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .nav-logo-img {
-            max-height: 55px; 
+            max-height: 75px; /* Increased mobile logo size */
             width: auto;
             display: block;
-            filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.4));
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -119,15 +118,15 @@
         nav ul {
             display: flex;
             list-style: none;
-            padding: 8px 24px 16px 24px;
-            gap: 28px;
+            padding: 12px 24px 20px 24px;
+            gap: 32px;
             white-space: nowrap;
         }
 
         nav a {
             font-size: 13px;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.75); /* Light text for dark header */
+            color: rgba(255, 255, 255, 0.75); 
             text-transform: uppercase;
             letter-spacing: 0.05em;
             transition: var(--transition);
@@ -146,27 +145,27 @@
         @media (min-width: 1024px) {
             .nav-wrapper {
                 flex-direction: row; align-items: center; justify-content: space-between;
-                max-width: 1400px; margin: 0 auto; padding: 12px 32px;
+                max-width: 1400px; margin: 0 auto; padding: 16px 40px;
             }
             .logo { margin-bottom: 0; }
-            .nav-logo-img { max-height: 65px; }
+            .nav-logo-img { max-height: 95px; } /* Much larger desktop logo */
             nav { width: auto; overflow-x: visible; }
-            nav ul { padding: 0; margin: 0; gap: 32px; }
+            nav ul { padding: 0; margin: 0; gap: 36px; }
         }
 
         /* =========================================
            PAGE SPECIFIC CONTENT
            ========================================= */
         main {
-            margin-top: 110px; 
+            margin-top: 130px; /* Adjusted to clear the taller header */
         }
 
         .hero {
-            /* REPLACE 'YOUR_PHOTO_HERE.jpg' WITH ACTUAL URL */
-            background: linear-gradient(135deg, rgba(62, 39, 35, 0.7) 0%, rgba(46, 125, 50, 0.4) 100%), url('YOUR_PHOTO_HERE.jpg');
+            /* FIXED "POOP" GRADIENT: Now a sleek espresso to charcoal cinematic fade */
+            background: linear-gradient(to bottom, rgba(40, 25, 20, 0.6) 0%, rgba(15, 15, 15, 0.85) 100%), url('YOUR_PHOTO_HERE.jpg');
             background-size: cover;
             background-position: center;
-            background-color: var(--brand-brown);
+            background-color: #2A1F1C; /* Premium dark espresso fallback color */
             border-radius: 0 0 var(--radius-xl) var(--radius-xl);
             margin: 0 12px;
             height: 85vh;
@@ -182,7 +181,7 @@
         }
 
         @media (min-width: 1024px) {
-            .hero { margin: 0 24px; border-radius: var(--radius-xl); margin-top: 130px; }
+            .hero { margin: 0 24px; border-radius: var(--radius-xl); margin-top: 150px; }
             main { margin-top: 0; }
         }
 
@@ -335,12 +334,12 @@
         }
 
         .footer-logo {
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
 
         .footer-logo img {
-            max-height: 80px;
-            opacity: 0.9;
+            max-height: 130px; /* Much larger footer logo */
+            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.4));
         }
 
         .footer-links {
