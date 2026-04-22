@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Authorized supplier of Cambridge Pavingstones. Explore our vast selection of patio pavers, natural stone, boulders, and bagged sand in White Marsh.">
+    <title>Stuckey's Lawn & Garden | Stones & Pavers</title>
+    
+    <style>
+        :root {
+            /* Premium Base Colors */
+            --bg-color: #F8F8F9;       
+            --surface-color: #FFFFFF;  
+            --text-primary: #1D1D1F;   
+            --text-secondary: #86868B; 
+            
+            /* Stuckey's Brand Accents */
+            --brand-green: #2E7D32;    
+            --brand-yellow: #FBC02D;   
+            --brand-brown: #3E2723;   
+            
+            /* UI Elements */
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --shadow-float: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.03);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Reset & System Typography */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.5; letter-spacing: -0.015em; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Keyframe Animations */
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-up { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
+
+        /* =========================================
+           GLOBAL HEADER
+           ========================================= */
+        header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--brand-brown); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 9999; transition: var(--transition); }
+        .nav-wrapper { display: flex; flex-direction: column; align-items: center; padding: 16px 0 0 0; }
+        .logo { margin-bottom: 16px; }
+        .nav-logo-img { max-height: 80px; width: auto; display: block; filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .nav-logo-img:hover { transform: scale(1.03); }
+        nav { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
+        nav ul { display: flex; list-style: none; padding: 8px 24px 20px 24px; gap: 24px; white-space: nowrap; }
+        nav a { font-size: 12px; font-weight: 600; color: rgba(255, 255, 255, 0.85); text-transform: uppercase; letter-spacing: 0.04em; transition: var(--transition); position: relative; }
+        nav a:hover, nav a.active { color: var(--brand-yellow); }
+        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 0; background-color: var(--brand-yellow); transition: var(--transition); }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+
+        @media (min-width: 1024px) {
+            .nav-wrapper { flex-direction: row; align-items: center; justify-content: space-between; max-width: 100%; padding: 16px 40px; }
+            .logo { margin-bottom: 0; flex-shrink: 0; }
+            .nav-logo-img { max-height: 100px; } 
+            nav { width: auto; overflow-x: visible; }
+            nav ul { padding: 0; margin: 0; gap: 18px; flex-wrap: nowrap; } 
+        }
+        @media (min-width: 1400px) { nav ul { gap: 28px; } nav a { font-size: 13px; } }
+
+        /* =========================================
+           PAGE SPECIFIC CONTENT (STONES & PAVERS)
+           ========================================= */
+        main { margin-top: 0; }
+        .inner-hero { background-color: var(--brand-brown); padding: 200px 24px 100px 24px; text-align: center; color: #FFFFFF; }
+        .inner-hero h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin: 0 auto; max-width: 1000px; }
+
+        /* Intro Text Layout */
+        .page-content-layout { padding: 80px 0 60px 0; }
+        .content-grid { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 1000px; margin: 0 auto; }
+        .lead-text { font-size: clamp(24px, 3.5vw, 32px); font-weight: 600; color: var(--text-primary); line-height: 1.3; letter-spacing: -0.02em; border-left: 4px solid var(--brand-green); padding-left: 24px; }
+        .body-text { font-size: clamp(17px, 2vw, 20px); color: var(--text-secondary); line-height: 1.6; }
+        .body-text p { margin-bottom: 24px; }
+        .body-text strong { color: var(--text-primary); font-weight: 600; }
+        
+        @media (min-width: 768px) {
+            .content-grid { grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start; }
+            .lead-text { position: sticky; top: 160px; }
+        }
+
+        /* Two Photo Gallery */
+        .photo-gallery { padding: 20px 24px 80px 24px; }
+        .gallery-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1000px; margin: 0 auto; }
+        @media (min-width: 768px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
+        .gallery-item { position: relative; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 4 / 3; box-shadow: var(--shadow-card); transition: var(--transition); background-color: var(--surface-color); }
+        .gallery-item:hover { box-shadow: var(--shadow-float); transform: translateY(-6px); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        /* Sleek Apple-Style Product Lists */
+        .products-container { padding: 40px 0 100px 0; max-width: 1000px; margin: 0 auto; }
+        
+        .product-section { background-color: var(--surface-color); border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-card); margin-bottom: 40px; border: 1px solid rgba(0,0,0,0.03); }
+        .product-section-header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--bg-color); }
+        .product-section-header h2 { font-size: 24px; font-weight: 800; color: var(--brand-brown); letter-spacing: -0.01em; margin-bottom: 8px; }
+        .product-section-header p { font-size: 15px; color: var(--text-secondary); font-weight: 500; }
+
+        .spec-table { width: 100%; border-collapse: collapse; }
+        .spec-table th, .spec-table td { padding: 16px 8px; border-bottom: 1px solid rgba(0,0,0,0.04); text-align: left; vertical-align: middle; }
+        .spec-table th { font-weight: 600; color: var(--text-secondary); text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
+        .spec-table tr:last-child td { border-bottom: none; }
+        .spec-table td.product-name { font-size: 16px; color: var(--text-primary); font-weight: 600; }
+        
+        .call-tag { display: inline-flex; align-items: center; background: rgba(251, 192, 45, 0.15); color: #B28900; padding: 6px 14px; border-radius: 99px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+        .call-tag::before { content: '📞'; margin-right: 6px; font-size: 10px; }
+
+        .disclaimer-box { background-color: #EFEBE9; border-radius: var(--radius-lg); padding: 24px; text-align: center; font-size: 14px; color: var(--text-secondary); font-weight: 500; }
+        .disclaimer-box strong { color: var(--brand-brown); }
+
+        /* Responsive tweaks for tables */
+        @media (max-width: 600px) {
+            .spec-table th, .spec-table td { padding: 12px 4px; }
+            .call-tag { padding: 4px 8px; font-size: 11px; }
+            .product-section { padding: 24px 16px; }
+        }
+
+        /* =========================================
+           GLOBAL FOOTER
+           ========================================= */
+        footer { background-color: var(--brand-brown); color: #F5F5F7; padding: 90px 24px 60px 24px; margin-top: 40px; border-radius: 0; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .footer-logo { margin-bottom: 60px; }
+        .footer-logo img { max-height: 160px; filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.3)); }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 64px; max-width: 800px; }
+        .footer-links a { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.7); transition: var(--transition); }
+        .footer-links a:hover { color: var(--brand-yellow); }
+        .copyright { font-size: 14px; color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="StuckeysLogo.png" alt="Stuckey's Lawn & Garden" class="nav-logo-img">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="stones-pavers.html" class="active">Stones & Pavers</a></li>
+                    <li><a href="sod-soil-mulch.html">Sod, Soil, Mulch</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="delivery.html">Delivery Service</a></li>
+                    <li><a href="contractor.html">Contractor Services</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="page-content">
+        
+        <section class="inner-hero animate-up">
+            <div class="container">
+                <h1>Landscaping Stones & Pavers.</h1>
+            </div>
+        </section>
+
+        <section class="page-content-layout">
+            <div class="container">
+                <div class="content-grid">
+                    
+                    <div class="lead-text animate-up delay-1">
+                        Finding the right patio pavers and garden wall bricks to create the perfect, unique look for your hardscape can be quite a task. 
+                    </div>
+                    
+                    <div class="body-text animate-up delay-2">
+                        <p>Here at Stuckey's we carry as many different styles and colors as possible — and we'll gladly order something for you if it's not already here.</p>
+                        
+                        <p>We are one of the area's foremost <strong>authorized suppliers of Cambridge Pavingstone hardscape materials</strong>. One look at the beauty of a patio designed with real Cambridge Pavingtones will convince you that this is the brand for you! We invite you to stop by and see our patio and retaining wall display, and select from dozens of different styles and colors to create the perfect combination to complement your current landscape.</p>
+                        
+                        <p>As you stroll through our yard, be sure to check out our terrific selection of stones, marble chips, sand, and boulders. These types of hardscape items are often overlooked in favor of colorful plants, but they can make a dramatic statement when used as garden or lawn accents.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item animate-up delay-1">
+                    <img src="Stones1.jpg" alt="Cambridge Pavingstones Display Area">
+                </div>
+                <div class="gallery-item animate-up delay-2">
+                    <img src="Stones2.jpg" alt="Stuckey's Hardscape Material Yard">
+                </div>
+            </div>
+        </section>
+
+        <section class="products-container animate-up delay-3">
+            <div class="container">
+                
+                <div class="product-section">
+                    <div class="product-section-header">
+                        <h2>Bagged Sand and Stone</h2>
+                        <p>Conveniently bagged materials ready for pickup.</p>
+                    </div>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th style="text-align: right;">Pricing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="product-name">Play Sand</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Lava Rocks</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Pond Pebbles</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Pea Pebbles</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Marble Chips</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Paver Base</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Paver Sand</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Polymeric Sand</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="product-section">
+                    <div class="product-section-header">
+                        <h2>Bulk Hardscape Materials</h2>
+                        <p>Available by the 1/2 Cubic Yard and 1 Cubic Yard.</p>
+                    </div>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th style="text-align: right;">Pricing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="product-name">#57 Stone (White)</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">#57 Stone (Gray)</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">CR6 Stone (Gray)</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Pea Gravel</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Concrete Sand</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Mason Sand</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Stone Dust</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Red Barn Stone</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">River Rounds</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Mixed Stone</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="product-section">
+                    <div class="product-section-header">
+                        <h2>Palletized Stone</h2>
+                        <p>Available by 1/4 Pallet, 1/2 Pallet, or Full Pallet.</p>
+                    </div>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th style="text-align: right;">Pricing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="product-name">1"-3" Blue Snap Edge</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">1"-3" Lilac</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">1"-3" PA Field Stone</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">1"-3" West Mountain</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">1"-3" Antique White</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="product-section">
+                    <div class="product-section-header">
+                        <h2>Boulders & Stand Up Stone</h2>
+                        <p>Available by the Whole Pallet Only.</p>
+                    </div>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th style="text-align: right;">Pricing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="product-name">Small Landscape Boulders</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Medium Landscape Boulders</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Large Landscape Boulders</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Irregular Stand Up West Mountain</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Irregular Stand Up Blue</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">Irregular Stand Up Lilac</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                            <tr><td class="product-name">River Rounds</td><td style="text-align: right;"><span class="call-tag">Call</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="disclaimer-box">
+                    <p style="margin-bottom: 8px;"><strong>Note:</strong> 1 full pallet = 1.5 tons (3,000 lbs.)</p>
+                    <p>All prices are subject to change without notice. Prices do not include taxes or delivery charges. Please see our <a href="delivery.html" style="color: var(--brand-green); text-decoration: underline;">Delivery page</a> for charges to your location.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="StuckeysLogo.png" alt="Stuckey's Lawn & Garden">
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="team.html">Our Team</a>
+                <a href="products.html">Products</a>
+                <a href="stones-pavers.html">Stones & Pavers</a>
+                <a href="sod-soil-mulch.html">Sod, Soil, Mulch</a>
+                <a href="services.html">Services</a>
+                <a href="delivery.html">Delivery Service</a>
+                <a href="contractor.html">Contractor Services</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Stuckey's Lawn & Garden. 9719 Phila. Rd., Baltimore MD 21237.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
