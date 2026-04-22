@@ -2,393 +2,473 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Stuckey's Lawn and Garden sets the standard for service. Providing mulch, pavers, sod, and contractor services near White Marsh, Maryland.">
-    <title>Stuckey's Lawn & Garden | Premium Landscaping Supplies</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Stuckey's Lawn and Garden sets the standard for service. Providing premium mulch, pavers, sod, and contractor services near White Marsh, Maryland.">
+    <title>Stuckey's Lawn & Garden</title>
     
     <style>
         :root {
-            /* Logo-inspired Color Scheme */
-            --brand-yellow: #FBC02D; /* Bright, golden yellow */
-            --brand-green: #388E3C;  /* vibrant forest green */
-            --brand-brown: #3E2723;  /* Deep rich brown */
-            --brand-brown-light: #5D4037;
-            --bg-cream: #FFFDF7;     /* Clean, warm off-white */
-            --text-dark: #212121;
-            --white: #FFFFFF;
+            /* Apple-Style Minimalist Base */
+            --bg-color: #F5F5F7;       /* Classic Apple light gray background */
+            --surface-color: #FFFFFF;  /* Pure white for cards */
+            --text-primary: #1D1D1F;   /* Off-black for optimal reading */
+            --text-secondary: #86868B; /* Soft gray for secondary text */
+            
+            /* Stuckey's Brand Accents */
+            --brand-green: #2E7D32;    /* Refined, modern forest green */
+            --brand-yellow: #FBC02D;   /* Premium gold/yellow */
+            --brand-brown: #3E2723;    /* Deep, sleek brown */
+            
+            /* UI Elements */
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-subtle: 0 4px 24px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* Reset & Native Typography */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            line-height: 1.6;
+            /* System fonts: identical to Apple's San Francisco */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            line-height: 1.2;
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.04em;
         }
 
         a {
             text-decoration: none;
-            transition: all 0.3s ease;
+            color: inherit;
         }
 
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Top Bar */
-        .top-bar {
-            background-color: var(--brand-brown);
-            color: var(--brand-yellow);
-            text-align: right;
-            padding: 10px 20px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-
-        .top-bar a {
-            color: var(--brand-yellow);
-        }
-
-        .top-bar a:hover {
-            color: var(--white);
-        }
-
-        /* Header & Navigation */
+        /* Glassmorphism Header */
         header {
-            background-color: var(--white);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 1000;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 9999;
         }
 
-        .header-content {
+        .nav-wrapper {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 20px 0;
+            padding: 12px 0 0 0;
         }
 
-        .logo-placeholder {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--brand-green);
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
             text-align: center;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
+            letter-spacing: -0.05em;
+            margin-bottom: 12px;
         }
 
-        .logo-placeholder span {
-            color: var(--brand-yellow);
-            -webkit-text-stroke: 1px var(--brand-brown); /* Gives it that bordered look from the original */
+        .logo span {
+            color: var(--brand-green);
         }
 
+        /* Horizontal Scrolling Nav for Mobile - Ultra Modern */
         nav {
             width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+        }
+        
+        nav::-webkit-scrollbar {
+            display: none; /* Hide scrollbar Chrome/Safari */
         }
 
         nav ul {
-            list-style: none;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+            list-style: none;
+            padding: 0 24px 12px 24px;
+            gap: 24px;
+            white-space: nowrap;
         }
 
         nav a {
-            color: var(--brand-brown);
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
             text-transform: uppercase;
-            padding: 5px 10px;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
         }
 
         nav a:hover {
             color: var(--brand-green);
-            background-color: rgba(56, 142, 60, 0.1);
-            border-radius: 4px;
         }
 
-        /* Hero Section with Photo Background */
+        /* Hero Section */
         .hero {
-            /* REPLACE 'YOUR_PHOTO_HERE.jpg' WITH YOUR ACTUAL IMAGE PATH */
-            background: linear-gradient(rgba(62, 39, 35, 0.7), rgba(62, 39, 35, 0.7)), url('YOUR_PHOTO_HERE.jpg') center/cover no-repeat;
-            min-height: 60vh;
+            /* YOUR PHOTO GOES IN THE URL BELOW */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('YOUR_PHOTO_HERE.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: var(--brand-brown); /* Fallback */
+            height: 90vh;
+            min-height: 600px;
             display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 80px 20px;
-            color: var(--white);
+            color: #FFFFFF;
+            padding: 0 24px;
+            margin-top: 50px; /* Offset for sticky header */
         }
 
         .hero h1 {
-            font-size: 3rem;
-            color: var(--brand-yellow);
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 56px;
+            line-height: 1.07143;
+            max-width: 800px;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 16px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-            font-weight: 600;
+            font-size: 24px;
+            font-weight: 400;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
         .btn {
             display: inline-block;
             background-color: var(--brand-green);
-            color: var(--white);
-            padding: 15px 30px;
-            font-size: 1.1rem;
+            color: #FFFFFF;
+            font-size: 17px;
             font-weight: 600;
-            border-radius: 3px;
-            text-transform: uppercase;
-            border: 2px solid var(--brand-green);
+            padding: 16px 32px;
+            border-radius: 980px; /* Perfect pill shape */
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
-            background-color: transparent;
-            color: var(--brand-yellow);
-            border-color: var(--brand-yellow);
+            transform: scale(1.02);
+            background-color: #256628;
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.3);
         }
 
-        /* Main Content */
-        .intro-section {
-            padding: 60px 0;
+        /* Typography Focused Intro Section */
+        .intro {
+            padding: 120px 24px;
             text-align: center;
-            background-color: var(--white);
+            background-color: var(--surface-color);
         }
 
-        .intro-section h2 {
-            color: var(--brand-green);
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-        }
-
-        .intro-content {
+        .intro h2 {
+            font-size: 48px;
+            color: var(--text-primary);
+            margin-bottom: 24px;
             max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            font-size: 1.1rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .intro-content p {
-            margin-bottom: 20px;
+        .intro p {
+            font-size: 21px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 24px auto;
         }
 
-        /* Info Action Cards */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            padding: 60px 0;
-        }
-
-        .info-card {
-            background-color: var(--white);
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            text-align: center;
-            border-bottom: 5px solid var(--brand-yellow);
-            transition: transform 0.3s ease;
-        }
-
-        .info-card:hover {
-            transform: translateY(-10px);
-            border-bottom-color: var(--brand-green);
-        }
-
-        .info-card h3 {
-            color: var(--brand-brown);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-        }
-
-        .hours-text {
+        .intro p strong {
+            color: var(--text-primary);
             font-weight: 600;
+        }
+
+        /* Apple-Style Bento Grid System */
+        .bento-grid {
+            padding: 80px 0 120px 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border-radius: var(--radius-lg);
+            padding: 48px 32px;
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(251, 192, 45, 0.15); /* Soft yellow bg */
+            color: var(--brand-yellow);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        /* Green accent for contact icon */
+        .card:nth-child(3) .card-icon {
+            background-color: rgba(46, 125, 50, 0.1);
             color: var(--brand-green);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .card-link {
+            margin-top: auto;
+            padding-top: 24px;
+            color: var(--brand-green);
+            font-weight: 600;
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-link:hover {
+            color: #1b5e20;
         }
 
         /* Footer */
         footer {
             background-color: var(--brand-brown);
-            color: var(--white);
-            padding: 40px 20px 20px 20px;
+            color: #F5F5F7;
+            padding: 64px 24px 40px 24px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
 
-        .footer-nav {
-            margin-bottom: 20px;
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
         }
 
-        .footer-nav a {
-            color: var(--brand-yellow);
-            margin: 0 10px;
-            font-size: 0.9rem;
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
         }
 
-        .footer-nav a:hover {
-            color: var(--white);
+        .footer-links a {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: #FFFFFF;
         }
 
         .copyright {
-            font-size: 0.85rem;
-            opacity: 0.7;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            margin-top: 20px;
+            padding-top: 24px;
+            width: 100%;
         }
 
-        /* Responsive Breakpoints */
-        @media (min-width: 768px) {
-            .header-content {
+        /* Desktop Adjustments */
+        @media (min-width: 1024px) {
+            .nav-wrapper {
                 flex-direction: row;
+                align-items: center;
                 justify-content: space-between;
-                padding: 20px;
                 max-width: 1400px;
                 margin: 0 auto;
+                padding: 16px 32px;
             }
 
-            .logo-placeholder {
+            .logo {
                 margin-bottom: 0;
-                font-size: 2rem;
-                text-align: left;
             }
 
             nav {
                 width: auto;
+                overflow-x: visible;
             }
-            
+
             nav ul {
-                gap: 20px;
+                padding: 0;
+                margin: 0;
             }
 
             .hero h1 {
-                font-size: 4rem;
+                font-size: 80px;
             }
 
-            .info-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .hero p {
+                font-size: 28px;
+            }
+
+            .intro {
+                padding: 160px 24px;
+            }
+
+            .intro h2 {
+                font-size: 64px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        Call Us Today: <a href="tel:4103910799">410-391-0799</a>
-    </div>
-
     <header>
-        <div class="header-content container">
-            <div class="logo-placeholder">
-                Stuckey's<br><span>Lawn & Garden</span>
+        <div class="nav-wrapper">
+            <div class="logo">
+                Stuckey's <span>Lawn & Garden</span>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#team">Our Team</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#stones-pavers">Stones & Pavers</a></li>
-                    <li><a href="#sod-soil-mulch">Sod, Soil, Mulch</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#delivery">Delivery Service</a></li>
-                    <li><a href="#contractor">Contractor Services</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Stones & Pavers</a></li>
+                    <li><a href="#">Sod, Soil, Mulch</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Delivery Service</a></li>
+                    <li><a href="#">Contractor Services</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>We Set The Standard For Service.</h1>
-            <p>Premium mulch, stone, pavers, and professional landscaping supplies for homeowners and contractors in Baltimore and White Marsh.</p>
-            <a href="#contact" class="btn">Start Your Project</a>
-        </div>
+    <section class="hero">
+        <h1>Set the standard.</h1>
+        <p>Premium landscaping supplies. Unmatched service.</p>
+        <a href="#contact" class="btn">Start Your Project</a>
     </section>
 
-    <section class="intro-section">
-        <div class="container">
-            <h2>Making a BIG Difference for Landscapers</h2>
-            <div class="intro-content">
-                <p>Whether you're looking for mulch to enhance your landscape or retaining wall materials and patio pavers for a more complex outdoor project, Stuckey's Lawn and Garden in Rosedale has the expertise you need to get the job done correctly.</p>
-                <p>Our family-owned and operated business has been helping folks near White Marsh Maryland with lawn, garden and landscaping needs for over two decades. We have the knowledge and experience to help you with all of your lawn and landscape projects, no matter how large or small.</p>
-                <p>Do you need information on stone, mulch or equipment? If you have a question, our experts will answer it—no waiting in long lines—no hassles. Our service is second to none—we guarantee it. So come on down to our neck of the woods and let us help you with your next outdoor project.</p>
+    <section class="intro">
+        <h2>Making a big difference for landscapers.</h2>
+        <p>Whether you're looking for mulch to enhance your landscape or retaining wall materials and patio pavers for a complex outdoor project, <strong>Stuckey's Lawn and Garden</strong> has the expertise you need.</p>
+        <p>Our family-owned operation near White Marsh, Maryland has been rooted in the community for over two decades. No waiting in long lines. No hassles. Service second to none.</p>
+    </section>
+
+    <section class="bento-grid bg-color">
+        <div class="container grid-container">
+            
+            <div class="card">
+                <div class="card-icon">⏱</div>
+                <h3>Convenient Hours</h3>
+                <p><strong>Summer Season</strong></p>
+                <p>Mon - Fri: 7 AM – 4:30 PM</p>
+                <p>Saturday: 7 AM – 12 Noon</p>
+                <p>Sunday: Closed</p>
             </div>
-        </div>
-    </section>
 
-    <section class="container info-grid">
-        <div class="info-card">
-            <h3>Convenient Hours</h3>
-            <p class="hours-text">Summer Season:</p>
-            <p style="margin-top: 10px;"><strong>Mon-Fri:</strong> 7 AM - 4:30 PM<br>
-               <strong>Saturday:</strong> 7 AM - 12 noon<br>
-               <strong>Sunday:</strong> Closed
-            </p>
-        </div>
+            <div class="card">
+                <div class="card-icon">📍</div>
+                <h3>Easy to Find</h3>
+                <p>Conveniently located just a few miles north of Beltway Exit 34.</p>
+                <p style="margin-top: 16px; color: var(--text-primary);"><strong>9719 Phila. Rd.</strong><br>Baltimore MD 21237</p>
+                <a href="#" class="card-link">Get Directions &rarr;</a>
+            </div>
 
-        <div class="info-card">
-            <h3>We're Easy to Find!</h3>
-            <p>Stuckey's Lawn and Garden is conveniently located just a few miles north of Beltway Exit 34.</p>
-            <p style="margin-top: 15px;">
-                <strong>9719 Phila. Rd.</strong><br>
-                Baltimore MD 21237
-            </p>
-            <a href="#directions" style="display: block; margin-top: 15px; color: var(--brand-green); font-weight: 600; text-decoration: underline;">Get Directions</a>
-        </div>
+            <div class="card" id="contact">
+                <div class="card-icon">📞</div>
+                <h3>We're Here to Help</h3>
+                <p>If you've got a question about your upcoming outdoor project, come to us for answers.</p>
+                <div style="margin-top: 24px;">
+                    <p style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Give us a call</p>
+                    <p style="font-size: 28px; font-weight: 600; color: var(--text-primary);">410-391-0799</p>
+                </div>
+            </div>
 
-        <div class="info-card" id="contact">
-            <h3>Got a Question?</h3>
-            <p>If you've got a question about your upcoming outdoor project, we want you to know you can come to us for answers.</p>
-            <p style="margin-top: 15px; font-weight: bold; font-size: 1.2rem; color: var(--brand-brown);">
-                Call: <a href="tel:4103910799" style="color: var(--brand-green);">410-391-0799</a>
-            </p>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="footer-nav">
-                <a href="#home">Home</a> | 
-                <a href="#team">Our Team</a> | 
-                <a href="#products">Products</a> | 
-                <a href="#stones-pavers">Stones & Pavers</a> | 
-                <a href="#sod-soil-mulch">Sod, Soil, Mulch</a> | 
-                <a href="#services">Services</a> | 
-                <a href="#delivery">Delivery Service</a> | 
-                <a href="#contractor">Contractor Services</a> | 
-                <a href="#faq">FAQ</a> | 
-                <a href="#contact">Contact Us</a>
+        <div class="footer-content">
+            <div class="footer-logo">Stuckey's Lawn & Garden</div>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Our Team</a>
+                <a href="#">Products</a>
+                <a href="#">Stones & Pavers</a>
+                <a href="#">Sod, Soil, Mulch</a>
+                <a href="#">Services</a>
+                <a href="#">Delivery Service</a>
+                <a href="#">Contractor Services</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
             </div>
             <div class="copyright">
-                &copy; 2026 Stuckey's Lawn & Garden | 9719 Phila. Rd., Baltimore MD 21237 | Ph: 410-391-0799
+                &copy; 2026 Stuckey's Lawn & Garden. 9719 Phila. Rd., Baltimore MD 21237.
             </div>
         </div>
     </footer>
